@@ -1,0 +1,6 @@
+git init [nazwa repozytorium]- komenda tworzy nowe repozytorium
+git pull origin master - pobiera wszystkie zmiany z serwera
+git remote add origin [adres repozytorium] - dodaje połączenie z serwisem hostingującym repozytorium
+touch [nazwa.rozszerzenie] - tworzy plik
+git commit -am ["nazwa_pliku"] - zatwierdza plik do przesyłu na serwer
+git push origin master - przesyła wszystkie pliki zatwierdzone poprzez komendę commit na serwer
