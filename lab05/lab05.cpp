@@ -212,7 +212,8 @@ int main() {
 	{
 		Textbook textbook=library.getTextbooks().at(i);
 		cout<<textbook.getType()<<" || "<<textbook.getTitle()<<endl;
-	};
+	}
+			break;
 	}
 	
 	
