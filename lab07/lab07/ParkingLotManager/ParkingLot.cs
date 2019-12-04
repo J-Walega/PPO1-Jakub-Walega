@@ -4,12 +4,14 @@ using System.Collections.Generic;
 
 namespace lab07.ParkingLotManager
 {
-    class ParkingLot
+    class ParkingLot : Blacklist
     {
         private List<IEntity> entitiesOnProperty = new List<IEntity>();
         private int carsOnProperty = 0;
         private int maxCarsOnProperty = 50;
         private int Money = 0;
+        private int bicyclesOnProperty = 0;
+        private int maxBicycles = 20;
 
         public bool CheckIfCanEnter(IEntity entity)
         {
@@ -18,42 +20,57 @@ namespace lab07.ParkingLotManager
 
         public void LetIn(IEntity entity)
         {
-            if(carsOnProperty < maxCarsOnProperty)
-            {
-                entitiesOnProperty.Add(entity);
-                Log.Info(entity.Identify() + " let in.");
-                Log.Info(entity.GetCharge());
+            GetBlacklist();
 
-                if (entity is Car)
+                entitiesOnProperty.Add(entity);
+
+                if (entity is Car || entity is TeacherCar)
                 {
+                    if (carsOnProperty == maxCarsOnProperty)
+                    {
+                        entitiesOnProperty.Add(entity);
+                        Log.Info(entity.Identify() + " did not let in - maximum number of cars on property");
+                    }
+                    Log.Info(entity.Identify() + " let in.");
                     this.carsOnProperty++;
-                    Money = Money + 5;
+                }
+
+                else if (entity is Bicycle)
+                {
+                    if(bicyclesOnProperty < maxBicycles)
+                    {
+                        Log.Info(entity.Identify() + " let in.");
+                        this.bicyclesOnProperty++;
+                    }
+                    else
+                    {
+                        Log.Info(entity.Identify() + " did not let in maximum number of bicycles on property");
+                    }
                 }
                 else if (entity is Pedestrian)
                 {
-
+                    Log.Info(entity.Identify() + " let in.");
+                }
+                else if (entity is PrivilagedVehicle)
+                {
+                    Log.Info(entity.Identify());
                 }
                 else
                 {
                     Log.Info(entity.Identify() + " did not let in- unknown vehicle");
                 }
+                
             }
 
-            if(carsOnProperty == maxCarsOnProperty)
-            {
-                entitiesOnProperty.Add(entity);
-                Log.Info(entity.Identify() + " did not let in - maximum number of cars on property");
-            }
-        }
 
         public int CountCars()
         {
             return this.carsOnProperty;
         }
 
-        public string EndOfTheDay()
+        public int CountBicycles()
         {
-            return "Money accumulated:" + Money + "PLN";
+            return this.bicyclesOnProperty;
         }
     }
 }

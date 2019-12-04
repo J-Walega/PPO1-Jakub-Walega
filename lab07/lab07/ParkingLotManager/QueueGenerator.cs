@@ -9,14 +9,30 @@ namespace lab07.ParkingLotManager
     class QueueGenerator
     {
         private static Random generator = new Random();
-        private static readonly int ANONYMOUS_PEDESTRIANS_COUNT = Convert.ToInt32(Console.ReadLine());
-        private static readonly int PEDESTRIANS_COUNT = Convert.ToInt32(Console.ReadLine());
-        private static readonly int CARS_COUNT = Convert.ToInt32(Console.ReadLine());
-        private static readonly int TEACHER_CARS_COUNT = Convert.ToInt32(Console.ReadLine());
-        private static readonly int BICYCLES_COUNT = Convert.ToInt32(Console.ReadLine());
+        private static int ANONYMOUS_PEDESTRIANS_COUNT = 30;
+        private static int PEDESTRIANS_COUNT = 10;
+        private static int CARS_COUNT = 50;
+        private static int TEACHER_CARS_COUNT = 10;
+        private static int BICYCLES_COUNT = 5;
+        private static int Money = 0;
+
+        private static void GetData()
+        {
+            Console.WriteLine("Set number of Anonymous Pedestrians:");
+            ANONYMOUS_PEDESTRIANS_COUNT = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Set number of Pedestrians:");
+            PEDESTRIANS_COUNT = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Set number of Cars:");
+            CARS_COUNT = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Set number of Teacher Cars:");
+            TEACHER_CARS_COUNT = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Set number of Bicycles:");
+            BICYCLES_COUNT = Convert.ToInt32(Console.ReadLine());
+        }
 
         public static List<IEntity> Generate()
         {
+            GetData();
             List<IEntity> queue = new List<IEntity>();
 
             for (int i = 0; i < ANONYMOUS_PEDESTRIANS_COUNT; i++)
@@ -32,6 +48,7 @@ namespace lab07.ParkingLotManager
             for (int i = 0; i < CARS_COUNT; i++)
             {
                 queue.Add(new Car(GetRandomPlateNumber()));
+                Money += 5;
             }
 
             for (int i = 0; i < TEACHER_CARS_COUNT; i++)
@@ -56,6 +73,10 @@ namespace lab07.ParkingLotManager
         {
             List<string> names = new List<string>() { "John", "Jack", "James", "George", "Joe", "Jim" };
             return names[generator.Next(names.Count)];
+        }
+        public static string CountMoney()
+        {
+            return Money +" PLN";
         }
     }
 }

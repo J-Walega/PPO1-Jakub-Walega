@@ -2,7 +2,7 @@
 
 namespace lab07.ParkingLotManager.Entities
 {
-    class Car : IEntity
+    class Car : IEntity, ICharge
     {
         private string plate;
 
@@ -21,9 +21,11 @@ namespace lab07.ParkingLotManager.Entities
             return "Car with plate number " + this.plate;
         }
 
-        public string GetCharge()
+        public int Pay()
         {
-            return "Paid 5 PLN";
+            return 5;
         }
+
+ 
     }
 }

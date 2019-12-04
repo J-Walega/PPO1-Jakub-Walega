@@ -24,9 +24,5 @@ namespace lab07.ParkingLotManager.Entities
             return !String.IsNullOrEmpty(this.name) ? this.name : "Unknown pedestrian";
         }
 
-        public string GetCharge()
-        {
-            return "";
-        }
     }
 }

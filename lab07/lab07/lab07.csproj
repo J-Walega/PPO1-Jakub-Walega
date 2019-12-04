@@ -43,11 +43,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ParkingLotManager\Blacklist.cs" />
     <Compile Include="ParkingLotManager\Entities\Bicycle.cs" />
     <Compile Include="ParkingLotManager\Entities\Car.cs" />
+    <Compile Include="ParkingLotManager\Entities\PrivilagedVehicle.cs" />
+    <Compile Include="ParkingLotManager\Entities\Tank.cs" />
     <Compile Include="ParkingLotManager\Entities\Pedestrian.cs" />
     <Compile Include="ParkingLotManager\Entities\TeacherCar.cs" />
     <Compile Include="ParkingLotManager\Interfaces\IEntity.cs" />
+    <Compile Include="ParkingLotManager\Interfaces\Charge.cs" />
     <Compile Include="ParkingLotManager\Log.cs" />
     <Compile Include="ParkingLotManager\ParkingLot.cs" />
     <Compile Include="ParkingLotManager\QueueGenerator.cs" />

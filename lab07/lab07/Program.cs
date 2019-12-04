@@ -14,7 +14,6 @@ namespace lab07
         {
             int HOUR = 7;
             int minutes = 0;
-            Console.WriteLine("Set data, in sequence, for: AnonymousPedestrians, Pedestrians, Cars, TeacherCars, Bicycles:\n");
             List<IEntity> queue = QueueGenerator.Generate();
             ParkingLot parking = new ParkingLot();
 
@@ -24,8 +23,7 @@ namespace lab07
             foreach(IEntity entity in queue)
             {
                 if (parking.CheckIfCanEnter(entity))
-                {
-                    parking.LetIn(entity);
+                {   
                     if(minutes < 10)
                     {
                         Console.WriteLine(HOUR + ":0" + minutes);
@@ -40,12 +38,14 @@ namespace lab07
                         minutes = 0;
                         HOUR++;
                     }
+                    parking.LetIn(entity);
                 }
             }
 
             Log.Info();
             Log.Info("There's " + parking.CountCars() + " cars in the parking lot");
-            Log.Info(parking.EndOfTheDay());
+            Log.Info("There's " + parking.CountBicycles() + " bicycles in the parking lot");
+            Console.WriteLine(QueueGenerator.CountMoney() + " gathered");
             Console.ReadKey();
         }
     }

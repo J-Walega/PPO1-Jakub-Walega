@@ -4,6 +4,5 @@
     {
         string Identify();
         bool CanEnter();
-        string GetCharge();
     }
 }

@@ -4,9 +4,9 @@
     {
         public TeacherCar(string plate) : base(plate) { }
 
-        public string GetCharge()
+        public int Pay()
         {
-            return "Entered for free - employee";
+            return 0;
         }
     }
 }

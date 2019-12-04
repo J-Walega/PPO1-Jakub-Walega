@@ -6,17 +6,12 @@ namespace lab07.ParkingLotManager.Entities
     {
         public bool CanEnter()
         {
-            return false;
+            return true;
         }
 
         public string Identify()
         {
             return "Unknown bicycle";
-        }
-
-        public string GetCharge()
-        {
-            return "";
         }
     }
 }
